@@ -5,9 +5,10 @@ import { TabsContainerComponent } from './tabs-container/tabs-container.componen
 import { TabComponent } from './tab/tab.component';
 import { InputComponent } from './input/input.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import {NgxMaskModule,IConfig} from 'ngx-mask'
 // import { ModalService } from '../services/modal.service';
 
-
+export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
   declarations: [
@@ -18,8 +19,10 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxMaskModule.forRoot()
   ],
+  
   exports:[ModalComponent,TabsContainerComponent,TabComponent,InputComponent],
   // providers:[ModalService]
 })

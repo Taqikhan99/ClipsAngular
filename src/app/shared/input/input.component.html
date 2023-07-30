@@ -1,6 +1,6 @@
-<input [formControl]="control " [type]="type" class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition
+<input [formControl]="control" [type]="type" class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition
                         duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
-            [placeholder]="placeholder"  />
+            [placeholder]="placeholder"  [mask]="format" />
         <!-- <span class="text-red-400" *ngIf="name && name.invalid ">Invalid Name</span> -->
         
         <!-- also we can validate using the controls -->
@@ -8,9 +8,16 @@
         <ng-container *ngIf="control.touched && control.dirty">
         <span *ngIf=" control.errors?.required" class="text-red-500">Field is Required</span>
         <span *ngIf="control.errors?.minlength" class="text-red-500">
-            Name must be {{control.errors?.minlength.requiredLength}} Long
+            Field must be {{control.errors?.minlength.requiredLength}} Long
+        </span>
+        <span *ngIf="control.errors?.maxlength" class="text-red-500">
+            Field must be {{control.errors?.maxlength.requiredLength}} Long
         </span>
 
         <span *ngIf="control.errors?.email" class="text-red-500">Please enter valid email</span>
+
+        <span *ngIf="control.errors?.min" class="text-red-500">You should be atleast 16</span>
+        <span *ngIf="control.errors?.max" class="text-red-500">You are over age limit 100</span>
+        <span *ngIf="control.errors?.pattern" class="text-red-500">Password must be atleast 8 chars, 1 uppcaps, 1 lowCaps 1 number</span>
 
     </ng-container>
