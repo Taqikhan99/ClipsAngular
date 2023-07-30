@@ -1,0 +1,13 @@
+<input [formControl]="control " type="text" class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition
+                        duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
+            placeholder="Enter Name"  />
+        <!-- <span class="text-red-400" *ngIf="name && name.invalid ">Invalid Name</span> -->
+        
+        <!-- also we can validate using the controls -->
+
+        <ng-container *ngIf="control.touched && control.dirty">
+        <span *ngIf=" control.errors?.required" class="text-red-500">Name is Required</span>
+        <span *ngIf="control.errors?.minlength" class="text-red-500">
+            Name must be {{control.errors?.minlength.requiredLength}} Long
+        </span>
+    </ng-container>
